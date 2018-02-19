@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-import Toolbar from './components/Toolbar';
+// import Toolbar from './components/Toolbar';
 import Container from './layout/Container';
-import Page from './layout/Page/index';
+import Page from './layout/Page';
 import Progress from './layout/Progress';
 
 
 require('typeface-roboto');
-import './styles/global.scss';
+import 'normalize-scss/sass/normalize/_import-now.scss';
 import 'material-design-icons/iconfont/material-icons.css';
 import './styles/theming.scss';
 
@@ -32,8 +32,7 @@ class Root extends Component {
       <Fragment>
         <Page>
           {isLoading && <Progress indeterminate style={{ position: 'fixed', zIndex: 500, bottom: 0 }} />}
-          <Toolbar />
-          <Container className={'mdc-toolbar-fixed-adjust'}>
+          <Container>
             Hello here
           <div style={{ height: '1111px' }} />
           </Container>
