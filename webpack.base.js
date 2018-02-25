@@ -27,34 +27,10 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.(s?css|sass)$/,
-        include: [/node_modules/, /styles\/theming\.scss/],
+        test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'sass-loader',
-          ],
-        }),
-      },
-      {
-        test: /\.(s?css|sass)$/,
-        exclude: [/node_modules/, /styles\/theming\.scss/],
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                camelCase: true,
-                localIdentName: '[local]___[hash:base64:5]',
-              },
-            },
-            {
-              loader: 'sass-loader',
-            },
-          ],
+          use: 'css-loader',
         }),
       },
       {
@@ -72,7 +48,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              publicPath: '../../',
+              publicPath: '../',
               outputPath: `${wpEnv.assets}/`,
               // useRelativePath: true,
               name: 'fonts/[name].[ext]',

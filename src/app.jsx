@@ -1,41 +1,46 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-// import Toolbar from './components/Toolbar';
-import Container from './layout/Container';
-import Page from './layout/Page';
-import Progress from './layout/Progress';
+import { MuiThemeProvider } from 'material-ui/styles';
+import { theme } from './layout/Theming';
+import {
+  Reboot,
+  withStyles,
+  Grid,
+  Avatar,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemIcon,
+  ListItemText,
+} from 'material-ui';
+
+import { Header, Main, Page } from './layout';
+import { Accent, ContactList } from './components';
 
 
 require('typeface-roboto');
-import 'normalize-scss/sass/normalize/_import-now.scss';
 import 'material-design-icons/iconfont/material-icons.css';
-import './styles/theming.scss';
 
 
 class Root extends Component {
-  state = {
-    isLoading: true,
-  };
-
-  componentDidMount() {
-    window.addEventListener('load', this.handleLoad);
-  }
-
-  handleLoad = () => {
-    // setTimeout(() => {this.setState({ isLoading: false });}, 3000);
-    window.removeEventListener('load', this.handleLoad);
-  };
-
   render() {
-    const { isLoading } = this.state;
     return (
       <Fragment>
         <Page>
-          {isLoading && <Progress indeterminate style={{ position: 'fixed', zIndex: 500, bottom: 0 }} />}
-          <Container>
-            Hello here
-          <div style={{ height: '1111px' }} />
-          </Container>
+          <Main>
+            <Header />
+            <Grid container>
+              <Grid item xs={12} lg={8}>
+                here will be my bio
+              </Grid>
+              <Grid item xs={12} lg={4}>
+                <div>
+                  <Accent textTransform='uppercase' fontSize='1.2em'>// contact</Accent>
+                </div>
+                <ContactList />
+              </Grid>
+            </Grid>
+          </Main>
         </Page>
       </Fragment>
     );
@@ -43,6 +48,11 @@ class Root extends Component {
 }
 
 render(
-  <Root />,
+  <Fragment>
+    <Reboot />
+    <MuiThemeProvider theme={theme}>
+      <Root />
+    </MuiThemeProvider>
+  </Fragment>,
   document.getElementById('app'),
 );

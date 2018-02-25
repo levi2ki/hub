@@ -1,21 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import ClassNames from 'classnames';
-import { LinearProgress } from 'react-md';
+import { CircularProgress } from 'material-ui/Progress';
 
 
-class Progress extends PureComponent {
+export class Progress extends PureComponent {
   static propTypes = {
     indeterminate: PropTypes.bool,
-    style: PropTypes.shape(),
+    style: Pr1opTypes.shape(),
   };
 
   render() {
 
     return (
-      <LinearProgress id={'dfsodfj234234'} />
+      <CircularProgress />
     );
   }
 }
-
-export default Progress;
